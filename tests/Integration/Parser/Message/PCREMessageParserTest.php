@@ -77,7 +77,7 @@ class PCREMessageParserTest extends TestCase
                     'Hey, I am a message!',
                 ),
                 source: null,
-                tags: null
+                tags: ImmutableTagList::createNormalizedTagList()
             )
         ];
 
@@ -94,7 +94,7 @@ class PCREMessageParserTest extends TestCase
                     user: 'timmy',
                     host: 'test.tld',
                 ),
-                tags: null
+                tags: ImmutableTagList::createNormalizedTagList()
             )
         ];
 

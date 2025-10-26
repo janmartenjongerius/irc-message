@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace JanMarten\IRC\Message\Parser\Message;
 
 use JanMarten\IRC\Message\Component\ImmutableMessage;
+use JanMarten\IRC\Message\Component\ImmutableTagList;
 use JanMarten\IRC\Message\Contract\Component\Message;
 use JanMarten\IRC\Message\Contract\Parser\CommandParser;
 use JanMarten\IRC\Message\Contract\Parser\MessageParser;
@@ -124,6 +125,8 @@ final readonly class PCREMessageParser implements MessageParser
                 );
             }
         }
+
+        $tags ??= ImmutableTagList::createNormalizedTagList();
 
         return new ImmutableMessage($command, $source, $tags);
     }

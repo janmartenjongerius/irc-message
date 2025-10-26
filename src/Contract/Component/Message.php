@@ -7,5 +7,5 @@ interface Message
 {
     public Command $command { get; }
     public ?Source $source { get; }
-    public ?TagList $tags { get; }
+    public TagList $tags { get; }
 }

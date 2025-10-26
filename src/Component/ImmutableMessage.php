@@ -13,7 +13,7 @@ final readonly class ImmutableMessage implements Message
     public function __construct(
         public Command $command,
         public ?Source $source,
-        public ?TagList $tags
+        public TagList $tags
     ) {
     }
 }
