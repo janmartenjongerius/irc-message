@@ -61,7 +61,7 @@ class PCREMessageParserTest extends TestCase
             $actual,
             sprintf(
                 'Expected parsed result for message %s to match expected message.',
-                var_export($actual, true)
+                print_r($actual, true)
             )
         );
     }
