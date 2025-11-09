@@ -140,7 +140,7 @@ final class ImmutableTagList implements TagList
      *
      * This is useful when switching on tags without values.
      *
-     *     $command->tags->is('delayed');
+     *     $message->tags->is('delayed');
      *
      * @param string $key E.g.: twitch.tv/ban-reason
      * @return bool
