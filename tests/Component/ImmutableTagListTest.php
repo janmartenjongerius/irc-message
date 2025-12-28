@@ -5,7 +5,7 @@ namespace JanMarten\IRC\Message\Tests\Component;
 
 use JanMarten\IRC\Message\Component\ImmutableTag;
 use JanMarten\IRC\Message\Component\ImmutableTagList;
-use LengthException;
+use JanMarten\IRC\Message\Exception\EmptyTagException;
 use OutOfBoundsException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -14,6 +14,7 @@ use UnexpectedValueException;
 
 #[CoversClass(ImmutableTagList::class)]
 #[UsesClass(ImmutableTag::class)]
+#[CoversClass(EmptyTagException::class)]
 class ImmutableTagListTest extends TestCase
 {
     public function testUnescapeNonExistentTag(): void
@@ -49,7 +50,7 @@ class ImmutableTagListTest extends TestCase
             )
         );
 
-        self::expectException(LengthException::class);
+        self::expectException(EmptyTagException::class);
         $tagList->unescape('id');
     }
 }

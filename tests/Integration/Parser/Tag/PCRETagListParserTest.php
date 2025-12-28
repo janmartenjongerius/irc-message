@@ -7,10 +7,10 @@ use JanMarten\IRC\Message\Component\ImmutableTag;
 use JanMarten\IRC\Message\Component\ImmutableTagList;
 use JanMarten\IRC\Message\Contract\Component\TagList;
 use JanMarten\IRC\Message\Contract\Parser\TagListParser;
+use JanMarten\IRC\Message\Exception\EmptyTagException;
 use JanMarten\IRC\Message\Exception\MalformedTagListException;
 use JanMarten\IRC\Message\Exception\ParseException;
 use JanMarten\IRC\Message\Parser\Tag\PCRETagListParser;
-use LengthException;
 use OutOfBoundsException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -22,6 +22,7 @@ use UnexpectedValueException;
 #[CoversClass(ImmutableTagList::class)]
 #[CoversClass(MalformedTagListException::class)]
 #[CoversClass(ParseException::class)]
+#[CoversClass(EmptyTagException::class)]
 final class PCRETagListParserTest extends TestCase
 {
     public static function createParser(): TagListParser
@@ -309,7 +310,7 @@ final class PCRETagListParserTest extends TestCase
             )
         );
 
-        self::expectException(LengthException::class);
+        self::expectException(EmptyTagException::class);
         $tagList->unescape('foo');
     }
 

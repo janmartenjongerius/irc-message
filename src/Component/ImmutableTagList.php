@@ -5,7 +5,7 @@ namespace JanMarten\IRC\Message\Component;
 
 use JanMarten\IRC\Message\Contract\Component\Tag;
 use JanMarten\IRC\Message\Contract\Component\TagList;
-use LengthException;
+use JanMarten\IRC\Message\Exception\EmptyTagException;
 use OutOfBoundsException;
 use UnexpectedValueException;
 
@@ -85,7 +85,7 @@ final class ImmutableTagList implements TagList
      * @return string
      *
      * @throws OutOfBoundsException when the tag for the given key does not exist.
-     * @throws LengthException when the selected tag has no value.
+     * @throws EmptyTagException when the selected tag has no value.
      */
     public function unescape(string $key): string
     {
@@ -104,8 +104,9 @@ final class ImmutableTagList implements TagList
         }
 
         if (strlen($value) === 0) {
-            throw new LengthException(
-                sprintf('Tag "%s" has no value.', $key)
+            throw new EmptyTagException(
+                sprintf('Tag "%s" has no value.', $key),
+                $this->tags[$key]
             );
         }
 
@@ -174,5 +175,10 @@ final class ImmutableTagList implements TagList
     public function rewind(): void
     {
         reset($this->tags);
+    }
+
+    public function count(): int
+    {
+        return count($this->tags);
     }
 }

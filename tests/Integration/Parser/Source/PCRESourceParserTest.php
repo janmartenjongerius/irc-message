@@ -7,8 +7,10 @@ use JanMarten\IRC\Message\Component\ImmutableSource;
 use JanMarten\IRC\Message\Contract\Component\Source;
 use JanMarten\IRC\Message\Exception\MalformedSourceException;
 use JanMarten\IRC\Message\Exception\ParseException;
+use JanMarten\IRC\Message\Formatter\Source\CreatesSourceMask;
 use JanMarten\IRC\Message\Parser\Source\PCRESourceParser;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -16,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ImmutableSource::class)]
 #[CoversClass(MalformedSourceException::class)]
 #[CoversClass(ParseException::class)]
+#[CoversTrait(CreatesSourceMask::class)]
 class PCRESourceParserTest extends TestCase
 {
     public static function createParser(): PCRESourceParser

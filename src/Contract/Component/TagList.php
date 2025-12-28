@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Contract\Component;
 
-use LengthException;
+use JanMarten\IRC\Message\Exception\EmptyTagException;
 use OutOfBoundsException;
 
-interface TagList extends \Iterator
+interface TagList extends \Iterator, \Countable
 {
     /**
      * Get the value of the provided tag key.
@@ -30,7 +30,7 @@ interface TagList extends \Iterator
      * @return string
      *
      * @throws OutOfBoundsException when the tag for the given key does not exist.
-     * @throws LengthException when the selected tag has no value.
+     * @throws EmptyTagException when the selected tag has no value.
      */
     public function unescape(string $key): string;
 
