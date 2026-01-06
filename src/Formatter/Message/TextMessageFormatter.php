@@ -32,6 +32,6 @@ final readonly class TextMessageFormatter implements MessageFormatter
 
         $result[] = $this->commandFormatter->formatCommand($message->command);
 
-        return implode(' ', $result);
+        return implode(' ', $result) . "\r\n";
     }
 }

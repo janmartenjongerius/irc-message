@@ -10,6 +10,30 @@ final readonly class TextCommandFormatter implements CommandFormatter
 {
     public function formatCommand(Command $command): string
     {
-        return implode(' ', [$command->verb, ...$command->arguments]);
+        $result = sprintf('%s', $command->verb);
+        $arguments = $command->arguments;
+
+        do {
+            $argument = array_shift($arguments);
+
+            if ($argument === null) {
+                break;
+            }
+
+            if (str_contains($argument, ' ') || str_starts_with($argument, ':')) {
+                $result .= implode(
+                    ' ',
+                    [
+                        sprintf(' :%s', $argument),
+                        ...$arguments
+                    ]
+                );
+                break;
+            }
+
+            $result .= sprintf(' %s', $argument);
+        } while (count($arguments) > 0);
+
+        return $result;
     }
 }
