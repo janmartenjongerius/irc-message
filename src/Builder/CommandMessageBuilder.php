@@ -5,13 +5,13 @@ namespace JanMarten\IRC\Message\Builder;
 
 use JanMarten\IRC\Message\Component\ImmutableCommand;
 use JanMarten\IRC\Message\Component\ImmutableMessage;
-use JanMarten\IRC\Message\Component\ImmutableSource;
 use JanMarten\IRC\Message\Contract\Component\Message;
 use JanMarten\IRC\Message\Contract\Component\Source;
 use JanMarten\IRC\Message\Contract\Component\TagList;
+use Stringable;
 use function JanMarten\IRC\Message\format;
 
-final class CommandMessageBuilder implements \Stringable
+final class CommandMessageBuilder implements Stringable
 {
     use WithTags;
     use WithSource;

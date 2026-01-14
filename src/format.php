@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message;
 
+use InvalidArgumentException;
 use JanMarten\IRC\Message\Contract\Component\Command;
 use JanMarten\IRC\Message\Contract\Component\Message;
 use JanMarten\IRC\Message\Contract\Component\MessageComponent;
@@ -45,7 +46,7 @@ function format(Message|MessageComponent $ircMessageComponent): string
         return $tagFormatter->formatTagList($ircMessageComponent);
     }
 
-    throw new \InvalidArgumentException(
+    throw new InvalidArgumentException(
         sprintf(
             'No supported formatter for component %s',
             print_r($ircMessageComponent, true)

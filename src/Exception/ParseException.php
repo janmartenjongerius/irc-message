@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Exception;
 
-abstract class ParseException extends \InvalidArgumentException
+use InvalidArgumentException;
+
+abstract class ParseException extends InvalidArgumentException
 {
 
 }

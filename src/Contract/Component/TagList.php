@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Contract\Component;
 
+use Countable;
+use Iterator;
 use JanMarten\IRC\Message\Exception\EmptyTagException;
 use OutOfBoundsException;
 
-interface TagList extends \Iterator, \Countable, MessageComponent
+interface TagList extends Iterator, Countable, MessageComponent
 {
     /**
      * Get the value of the provided tag key.
