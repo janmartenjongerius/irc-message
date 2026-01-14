@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Tests\Helper;
 
+use InvalidArgumentException;
 use JanMarten\IRC\Message\Component\ImmutableTag;
 use JanMarten\IRC\Message\Component\ImmutableTagList;
 use JanMarten\IRC\Message\Contract\Component\Message;
@@ -76,7 +77,7 @@ final class FormatHelperTest extends TestCase
 
     public function testFormatUnsupportedComponent(): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(InvalidArgumentException::class);
         format(new class implements MessageComponent {});
     }
 }

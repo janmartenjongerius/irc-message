@@ -13,7 +13,6 @@ use JanMarten\IRC\Message\Component\ImmutableMessage;
 use JanMarten\IRC\Message\Component\ImmutableSource;
 use JanMarten\IRC\Message\Component\ImmutableTag;
 use JanMarten\IRC\Message\Component\ImmutableTagList;
-use JanMarten\IRC\Message\Contract\Component\Message;
 use JanMarten\IRC\Message\Contract\Component\Source;
 use JanMarten\IRC\Message\Formatter\Command\TextCommandFormatter;
 use JanMarten\IRC\Message\Formatter\Message\TextMessageFormatter;
@@ -61,7 +60,7 @@ final class MessageBuilderTest extends TestCase
             ->command($verb, ...$arguments);
         $message = $builder->build();
 
-        self::assertSame(format($message), "{$builder}");
+        self::assertSame(format($message), "$builder");
 
         $command = command($message)
             ->withAddedTag('class', __CLASS__)
