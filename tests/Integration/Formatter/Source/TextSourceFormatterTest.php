@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Integration\Formatter\Source;
+namespace JanMarten\IRC\Message\Tests\Integration\Formatter\Source;
 
 use JanMarten\IRC\Message\Component\ImmutableSource;
 use JanMarten\IRC\Message\Contract\Component\Source;

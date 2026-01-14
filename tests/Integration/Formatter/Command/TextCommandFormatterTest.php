@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Integration\Formatter\Command;
+namespace JanMarten\IRC\Message\Tests\Integration\Formatter\Command;
 
 use JanMarten\IRC\Message\Component\ImmutableCommand;
 use JanMarten\IRC\Message\Contract\Component\Command;

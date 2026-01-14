@@ -22,4 +22,29 @@ final class ImmutableSource implements Source
             return self::createSourceMask($this);
         }
     }
+
+    /**
+     * Produces an instance of itself using the environment.
+     * Environment variables can be used to influence the produced source.
+     *
+     *     property: nick
+     *     variable: IRC_NICK
+     *     fallback: get_current_user()
+     *
+     *     property: user
+     *     variable: IRC_USER
+     *     fallback: get_current_user()
+     *
+     *     property: host
+     *     variable: IRC_HOST
+     *     fallback: 'localhost'
+     */
+    public static function fromEnv(): self
+    {
+        return new self(
+            nick: getenv('IRC_NICK') ?: get_current_user(),
+            user: getenv('IRC_USER') ?: get_current_user(),
+            host: getenv('IRC_HOST') ?: 'localhost',
+        );
+    }
 }

@@ -6,7 +6,7 @@ namespace JanMarten\IRC\Message\Contract\Component;
 use JanMarten\IRC\Message\Exception\EmptyTagException;
 use OutOfBoundsException;
 
-interface TagList extends \Iterator, \Countable
+interface TagList extends \Iterator, \Countable, MessageComponent
 {
     /**
      * Get the value of the provided tag key.
@@ -47,6 +47,15 @@ interface TagList extends \Iterator, \Countable
      * @see get
      */
     public function is(string $key): bool;
+
+
+    /**
+     * Query whether a tag for the given key is contained by the list of tags.
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function contains(string $key): bool;
 
     public function current(): false|Tag;
 

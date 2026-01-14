@@ -12,7 +12,12 @@
   "autoload": {
     "psr-4": {
       "JanMarten\\IRC\\Message\\": "src"
-    }
+    },
+    "files": [
+      "src/format.php",
+      "src/message.php",
+      "src/parse.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {

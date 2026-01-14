@@ -17,6 +17,12 @@
         </testsuite>
     </testsuites>
 
+    <php>
+        <env name="IRC_NICK" value="test" />
+        <env name="IRC_USER" value="Test" />
+        <env name="IRC_HOST" value="janmarten.name" />
+    </php>
+
     <source ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
         <include>
             <directory>src</directory>

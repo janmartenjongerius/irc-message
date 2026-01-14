@@ -17,6 +17,27 @@ use UnexpectedValueException;
 #[CoversClass(EmptyTagException::class)]
 class ImmutableTagListTest extends TestCase
 {
+    public function testContains(): void
+    {
+        $tagList = ImmutableTagList::createNormalizedTagList(
+            new ImmutableTag(
+                keyName: 'id',
+                value: true,
+                clientOnly: false,
+                vendor: 'janmarten.name'
+            )
+        );
+
+        self::assertFalse(
+            $tagList->contains('id'),
+            'Expected to not find a tag for "id"'
+        );
+        self::assertTrue(
+            $tagList->contains('janmarten.name/id'),
+            'Expected to find a tag for "janmarten.name/id"'
+        );
+    }
+
     public function testUnescapeNonExistentTag(): void
     {
         $tagList = ImmutableTagList::createNormalizedTagList();

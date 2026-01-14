@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Contract\Component;
 
-interface Source
+interface Source extends MessageComponent
 {
     public string $mask { get; }
     public string $nick { get; }

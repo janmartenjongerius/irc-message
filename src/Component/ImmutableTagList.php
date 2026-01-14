@@ -152,6 +152,11 @@ final class ImmutableTagList implements TagList
         return $this->get($key) === true;
     }
 
+    public function contains(string $key): bool
+    {
+        return array_key_exists($key, $this->tags);
+    }
+
     public function current(): false|Tag
     {
         return current($this->tags);

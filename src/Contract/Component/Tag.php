@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace JanMarten\IRC\Message\Contract\Component;
 
-interface Tag
+interface Tag extends MessageComponent
 {
     public string $key { get; }
     public string|true $value { get; }
