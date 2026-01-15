@@ -1,0 +1,21 @@
+services:
+  composer:
+    build:
+      context: .
+      target: composer
+    volumes:
+      - .:/usr/src/app
+
+  phpunit:
+    build:
+      context: .
+      target: tests
+    environment:
+      IRC_NICK: test
+      IRC_USER: Test
+      IRC_HOST: janmarten.name
+    volumes:
+      - ./src:/usr/src/app/src:ro
+      - ./tests:/usr/src/app/tests:ro
+      - ./composer.json:/usr/src/app/composer.json:ro
+      - ./phpunit.xml:/usr/src/app/phpunit.xml:ro
