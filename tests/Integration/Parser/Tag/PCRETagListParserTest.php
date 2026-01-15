@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Integration\Parser\Tag;
+namespace JanMarten\IRC\Message\Tests\Integration\Parser\Tag;
 
 use JanMarten\IRC\Message\Component\ImmutableTag;
 use JanMarten\IRC\Message\Component\ImmutableTagList;

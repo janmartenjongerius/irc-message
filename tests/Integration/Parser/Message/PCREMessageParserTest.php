@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Integration\Parser\Message;
+namespace JanMarten\IRC\Message\Tests\Integration\Parser\Message;
 
 use JanMarten\IRC\Message\Component\ImmutableCommand;
 use JanMarten\IRC\Message\Component\ImmutableMessage;
