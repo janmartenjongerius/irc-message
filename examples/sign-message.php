@@ -5,7 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use JanMarten\IRC\Message\Contract\Component\Tag;
-use function JanMarten\IRC\Message\command;
+use function JanMarten\IRC\Message\fromMessage;
 use function JanMarten\IRC\Message\message;
 
 $userMessage = 'Hello, fellow chatters!';
@@ -45,6 +45,6 @@ foreach ($message->command->arguments as $argument) {
     hash_update($ctx, $argument);
 }
 
-echo command($message)
+echo fromMessage($message)
     ->withAddedTag('hash-algo', $hashAlgo, 'acme.org')
     ->withAddedTag('hash', hash_final($ctx), 'acme.org');

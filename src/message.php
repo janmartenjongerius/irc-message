@@ -14,7 +14,7 @@ function message(?Source $source = null): MessageBuilder
     return new MessageBuilder($source ?? ImmutableSource::fromEnv());
 }
 
-function command(Message $message): CommandMessageBuilder
+function fromMessage(Message $message): CommandMessageBuilder
 {
     return CommandMessageBuilder::fromMessage($message);
 }

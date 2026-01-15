@@ -21,7 +21,7 @@ aforementioned documentation.
   - [Parsing tags](#parsing-tags)
 - [Composing IRC messages](#composing-irc-messages)
   - [Composing new messages](#composing-new-messages)
-  - [Patching command messages](#patching-command-messages)
+  - [Patching messages](#patching-messages)
 - [Formatting IRC message lines](#formatting-irc-message-lines)
   - [Formatting a message](#formatting-a-message)
   - [Formatting a command](#formatting-a-command)
@@ -248,8 +248,8 @@ The following exceptions can be produced when parsing a list of tags:
 # Composing IRC messages
 
 While manually creating the correct IRC message objects is a perfectly valid
-approach, the `message` and `command` helper functions are available to expose
-a builder pattern for composing messages.
+approach, the `message` and `fromMessage` helper functions are available to
+expose a builder pattern for composing messages.
 
 To compose a message, use the following example:
 
@@ -320,18 +320,18 @@ Would produce something like the following:
 @acme.org/hash-algo=sha256 :janmarten!janmarten@localhost PING _
 ```
 
-## Patching command messages
+## Patching messages
 
-When patching an existing message object, the `command` helper function can be
+When patching an existing message object, the `fromMessage` helper function can be
   used to produce a builder that builds on top of the existing message information.
 
 ```php
-use function JanMarten\IRC\Message\command;
+use function JanMarten\IRC\Message\fromMessage;
 use function JanMarten\IRC\Message\parse;
 
 $originalMessage = parse('PING _');
 
-echo command($originalMessage)
+echo fromMessage($originalMessage)
     ->withSourceFromEnv()
     ->withAddedTag('id', bin2hex(random_bytes(16)))
 ;

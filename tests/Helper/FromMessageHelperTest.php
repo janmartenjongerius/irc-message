@@ -10,20 +10,20 @@ use JanMarten\IRC\Message\Component\ImmutableTagList;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
-use function JanMarten\IRC\Message\command;
+use function JanMarten\IRC\Message\fromMessage;
 
-#[CoversFunction('JanMarten\IRC\Message\command')]
+#[CoversFunction('JanMarten\IRC\Message\fromMessage')]
 #[UsesClass(CommandMessageBuilder::class)]
 #[UsesClass(ImmutableMessage::class)]
 #[UsesClass(ImmutableCommand::class)]
 #[UsesClass(ImmutableTagList::class)]
-final class CommandHelperTest extends TestCase
+final class FromMessageHelperTest extends TestCase
 {
-    public function testCommandHelper(): void
+    public function testFromMessageHelper(): void
     {
         self::assertInstanceOf(
             CommandMessageBuilder::class,
-            command(
+            fromMessage(
                 new ImmutableMessage(
                     command: new ImmutableCommand('PING'),
                     source: null,

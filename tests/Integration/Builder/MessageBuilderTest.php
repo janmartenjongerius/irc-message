@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\Attributes\UsesFunction;
 use PHPUnit\Framework\Attributes\UsesTrait;
 use PHPUnit\Framework\TestCase;
-use function JanMarten\IRC\Message\command;
+use function JanMarten\IRC\Message\fromMessage;
 use function JanMarten\IRC\Message\format;
 use function JanMarten\IRC\Message\message;
 
@@ -47,7 +47,7 @@ use function JanMarten\IRC\Message\message;
 #[UsesClass(TextTagFormatter::class)]
 #[UsesFunction('JanMarten\IRC\Message\format')]
 #[UsesFunction('JanMarten\IRC\Message\message')]
-#[UsesFunction('JanMarten\IRC\Message\command')]
+#[UsesFunction('JanMarten\IRC\Message\fromMessage')]
 final class MessageBuilderTest extends TestCase
 {
     #[TestWith(['PING'])]
@@ -62,7 +62,7 @@ final class MessageBuilderTest extends TestCase
 
         self::assertSame(format($message), "$builder");
 
-        $command = command($message)
+        $command = fromMessage($message)
             ->withAddedTag('class', __CLASS__)
             ->build();
 
@@ -83,7 +83,7 @@ final class MessageBuilderTest extends TestCase
             $message->command->arguments
         );
 
-        $message = command($message)
+        $message = fromMessage($message)
             ->withArguments('foo')
             ->build();
 
@@ -95,14 +95,14 @@ final class MessageBuilderTest extends TestCase
         $message = message()->command(__FUNCTION__)->build();
         self::assertInstanceOf(Source::class, $message->source);
 
-        $message = command($message)->withoutSource()->build();
+        $message = fromMessage($message)->withoutSource()->build();
         self::assertNull($message->source);
 
         $source = new ImmutableSource(nick: __FUNCTION__, user: __METHOD__, host: __CLASS__);
-        $message = command($message)->withSource($source)->build();
+        $message = fromMessage($message)->withSource($source)->build();
         self::assertSame($source, $message->source);
 
-        $message = command($message)->withSourceFromEnv()->build();
+        $message = fromMessage($message)->withSourceFromEnv()->build();
         self::assertSame(format(ImmutableSource::fromEnv()), format($message->source));
     }
 
@@ -116,19 +116,19 @@ final class MessageBuilderTest extends TestCase
 
         self::assertSame(__METHOD__, $message->tags->unescape('method'));
 
-        $command = command($message)
+        $command = fromMessage($message)
             ->withoutTag('method')
             ->build();
 
         self::assertFalse($command->tags->contains('method'));
 
-        $command = command($message)
+        $command = fromMessage($message)
             ->withoutTags()
             ->build();
 
         self::assertFalse($command->tags->contains('method'));
 
-        $command = command($message)
+        $command = fromMessage($message)
             ->withoutTags()
             ->withTags($message->tags)
             ->build();
