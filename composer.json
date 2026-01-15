@@ -25,9 +25,13 @@
     }
   },
   "require": {
+    "ext-pcre": "*",
     "php": "^8.4"
   },
   "require-dev": {
+    "ext-hash": "*",
+    "ext-random": "*",
+    "ext-xdebug": "*",
     "phpunit/phpunit": "^12.4.0"
   }
 }
