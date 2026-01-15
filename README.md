@@ -458,7 +458,7 @@ Produces the following:
 ```
 @id=1;+janmarten.name/key=foo
   id=1
-  janmarten.name/key=foo
+  +janmarten.name/key=foo
 ```
 
 The following exceptions can be produced when formatting a tag list:
