@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - run: docker compose --rm phpunit --coverage-text
+      - run: docker compose run --rm phpunit --coverage-text
