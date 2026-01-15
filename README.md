@@ -1,3 +1,5 @@
+[![PhpUnit](https://github.com/janmartenjongerius/irc-message/actions/workflows/phpunit.yml/badge.svg)](https://github.com/janmartenjongerius/irc-message/actions/workflows/phpunit.yml)
+
 The purpose of this library is to understand IRC message syntax and expose its
   components as modern data structures inside PHP.
 
